@@ -1,0 +1,138 @@
+<app-navbar [navLight] = 'false' [navClass] = "'justify-end '" [bgLight] = 'false' [navFull] = 'true' />
+
+<section class="relative table md:pt-60 pt-36 w-full bg-gradient-to-b from-emerald-600/20 dark:from-emerald-600/40 via-emerald-600/10 dark:via-emerald-600/20 to-transparent">
+    <div class="container z-1">
+        <div class="grid grid-cols-1 text-center relative">
+            <h4 class="lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 font-bold">Join our world-class team <br> of creators & dreamers</h4>
+            <p class="text-slate-400 text-lg max-w-xl mx-auto">Find Jobs, Employment & Career Opportunities. Some of the companies we've helped recruit excellent applicants over the years.</p>
+        
+            <div class="d-flex" id="reserve-form">
+                <div class="md:w-5/6 mx-auto">
+                    <div class="lg:col-span-10 mt-8">
+                        <div class="bg-white dark:bg-slate-900 border-0 shadow rounded-md p-3">
+                            <form action="#">
+                                <div class="registration-form text-dark text-start">
+                                    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
+                                        <div class="filter-search-form relative filter-border">
+                                            <i class="uil uil-briefcase-alt icons"></i>
+                                            <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search your Keywords">
+                                        </div>
+
+                                        <div class="filter-search-form relative filter-border bg-gray-50 h-[60px] dark:bg-slate-800 border-0 focus:ring-0 ps-10">
+                                            <i class="uil uil-map-marker icons"></i>
+                                            <select class="form-select bg-gray-50 h-[60px] dark:bg-slate-800 border-0 focus:ring-0 w-full" data-trigger name="choices-location" id="choices-location" aria-label="Default select example">
+                                                <option value="AF">Afghanistan</option>
+                                                <option value="AZ">Azerbaijan</option>
+                                                <option value="BS">Bahamas</option>
+                                                <option value="BH">Bahrain</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="CV">Cape Verde</option>
+                                                <option value="DK">Denmark</option>
+                                                <option value="DJ">Djibouti</option>
+                                                <option value="ER">Eritrea</option>
+                                                <option value="EE">Estonia</option>
+                                                <option value="GM">Gambia</option>
+                                            </select>
+                                        </div>
+
+                                        <input type="submit" id="search" name="search" style="height: 60px;" class="btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white searchbtn submit-btn w-100" value="Search">
+                                    </div><!--end grid-->
+                                </div><!--end container-->
+                            </form>
+                        </div>
+                    </div><!--ed col-->
+                </div>
+            </div><!--end grid-->
+
+            <div class="mt-4">
+                <span class="text-slate-400"><span class="text-slate-900 dark:text-white">Popular Searches :</span> Designer, Developer, Web, IOS, PHP Senior Engineer</span>
+            </div>
+
+            <div class="absolute -top-20 start-1/2 -translate-x-1/2">
+                <div class="size-10 animate-[bounce_2s_infinite] bg-white dark:bg-slate-900 flex items-center justify-center shadow dark:shadow-gray-700 rounded-md">
+                    <img src="assets/images/company/facebook-logo.png" class="size-6"  alt="">
+                </div>
+            </div>
+
+            <div class="absolute top-[40%] start-10">
+                <div class="size-10 animate-[spin_5s_linear_infinite] bg-white dark:bg-slate-900 flex items-center justify-center shadow dark:shadow-gray-700 rounded-md">
+                    <img src="assets/images/company/google-logo.png" class="size-6"  alt="">
+                </div>
+            </div>
+
+            <div class="absolute top-[40%] end-1">
+                <div class="size-10 bg-white dark:bg-slate-900 flex items-center justify-center shadow dark:shadow-gray-700 rounded-md">
+                    <img src="assets/images/company/android.png" class="size-6"  alt="">
+                </div>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="container">
+        <div class="grid grid-cols-1">
+            <img src="assets/images/hero/bg6.png" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="relative md:py-24 py-16">
+    <div class="container">
+        <app-counter/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Categories</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+        <app-popular-categories [rounded] = "'rounded-full'"/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 md:pb-16 mt-16">
+        <app-millions-of-job/>
+    </div><!--end container-->
+</section>
+
+<section class="relative bg-slate-50 dark:bg-slate-800 md:py-24 py-16">
+    <div class="container">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Jobs</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+
+        <app-popular-job-four/>
+
+        <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+            <div class="md:col-span-12 text-center">
+                <a routerLink="/job-grid-two" class="btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600 duration-500 ease-in-out">See More Jobs <i class="uil uil-arrow-right align-middle"></i></a>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+</section><!--end section-->
+
+<section class="relative md:py-24 py-16 overflow-hidden">
+    <div class="container md:pb-16">
+        <app-best-companies/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <app-services/>
+    </div><!--end container-->
+    
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Latest Blog or News</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+
+        <app-blog/>
+    </div><!--end container-->
+
+    <div class="container-fluid md:mt-24 mt-16">
+        <app-explore-job/>
+    </div><!--end container-->
+</section>
+<app-footer/>

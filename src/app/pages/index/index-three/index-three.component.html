@@ -1,0 +1,124 @@
+<app-navbar [navLight] = 'false' [navClass] = "'justify-center'" [bgLight] = 'false' [navFull] = 'false' />
+
+<section class="relative py-36 table w-full bg-gradient-to-b from-emerald-600/20 dark:from-emerald-600/40 via-emerald-600/10 dark:via-emerald-600/20 to-transparent">
+    <div class="container">
+        <div class="grid md:grid-cols-2 grid-cols-1 items-center mt-10 gap-[30px]">
+            <div class="md:order-1 order-2">
+                <div class="bg-white dark:bg-slate-900 rounded-xl shadow dark:shadow-gray-800 md:p-8 p-6 lg:me-10 relative">
+                    <h4 class="mb-3 text-3xl font-semibold">Find Your Expected Job</h4>
+                    <p class="text-slate-400">Find Jobs, Employment & Career Opportunities. Some of the companies we've helped recruit excellent applicants over the years.</p>
+
+                    <form class="mt-6">
+                        <div class="grid grid-cols-1">
+                            <div class="mb-4">
+                                <label class="form-label font-medium">Search :</label>
+                                <div class="filter-search-form relative mt-2">
+                                    <i class="uil uil-briefcase-alt icons"></i>
+                                    <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800" placeholder="Search your Keywords">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label font-medium">Location :</label>
+                                <div class="filter-search-form relative bg-gray-50 h-[60px] dark:bg-slate-800 border-0 focus:ring-0 ps-10">
+                                    <i class="uil uil-map-marker icons"></i>
+                                    <select class="form-select bg-gray-50 h-[60px] dark:bg-slate-800 border-0 focus:ring-0 w-full" data-trigger name="choices-location" id="choices-location" aria-label="Default select example">
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AZ">Azerbaijan</option>
+                                        <option value="BS">Bahamas</option>
+                                        <option value="BH">Bahrain</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="CV">Cape Verde</option>
+                                        <option value="DK">Denmark</option>
+                                        <option value="DJ">Djibouti</option>
+                                        <option value="ER">Eritrea</option>
+                                        <option value="EE">Estonia</option>
+                                        <option value="GM">Gambia</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label font-medium">Job Type :</label>
+                                <div class="filter-search-form relative bg-gray-50 h-[60px] dark:bg-slate-800 border-0 focus:ring-0 ps-10">
+                                    <i class="uil uil-briefcase-alt icons"></i>
+                                    <select class="form-select bg-gray-50 h-[60px] dark:bg-slate-800 border-0 focus:ring-0 w-full" data-trigger name="choices-type" id="choices-type" aria-label="Default select example">
+                                        <option selected="" value="1">Full Time</option>
+                                        <option value="2">Part Time</option>
+                                        <option value="3">Freelancer</option>
+                                        <option value="4">Remote Work</option>
+                                        <option value="5">Office Work</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <input type="submit" id="search" name="search" class="btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white searchbtn submit-btn rounded-md" value="Search">
+                            </div>
+                        </div><!--end grid-->
+                    </form>
+                    <!-- end form -->
+                </div>
+            </div>
+
+            <div class="md:order-2 order-1">
+                <img src="assets/images/svg/woman_working_2.svg" alt="">
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="container mt-16">
+        <div class="grid md:grid-cols-10 sm:grid-cols-5 grid-cols-4 justify-center gap-[30px]">
+            <div *ngFor="let item of logoImg" class="size-12 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 flex justify-center items-center rounded-md mx-auto py-4">
+                <img [src]="item" class="h-7" alt="">
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+</section>
+
+<section class="relative md:pb-24 pb-16">
+    <div class="container">
+        <app-work/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <app-get-job/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <app-browse-caregory/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Jobs</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+
+        <app-popular-job-two/>
+
+        <div class="grid md:grid-cols-1 grid-cols-1 mt-8">
+            <div class="md:col-span-12 text-center">
+                <a routerLink="/job-grid-two" class="btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600 duration-500 ease-in-out">See More Jobs <i class="uil uil-arrow-right align-middle"></i></a>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+</section>
+
+<app-cta/>
+
+<section class="relative md:py-24 py-16">
+    <app-best-companies-two/>
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Latest Blog or News</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+
+        <app-blog/>
+    </div><!--end container-->
+</section>
+<app-footer/>

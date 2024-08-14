@@ -1,0 +1,98 @@
+<app-navbar [navLight] = 'false' [navClass] = "'justify-start '" [bgLight] = 'true' [navFull] = 'false' />
+
+<section class="lg:h-screen py-36 h-auto relative flex items-center background-effect overflow-hidden bg-[url('../../assets/images/hero/bg2.jpg')] bg-no-repeat bg-cover">
+    <div class="container-fluid">
+        <div class="absolute inset-0 z-0 bg-[url('../../assets/images/hero/curve-shape.png')] dark:bg-[url('../../assets/images/hero/curve-shape-dark.png')] bg-top bg-cover"></div>
+    </div><!--end container-->
+
+    <div class="container z-1">
+        <div class="grid grid-cols-1 mt-10">
+            <h4 class="lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 font-bold">Make The Best Move to <br> Choose Your <span class="text-emerald-600">New Job</span></h4>
+            <p class="text-slate-400 text-lg max-w-xl">Find Jobs, Employment & Career Opportunities. Some of the companies we've helped recruit excellent applicants over the years.</p>
+        
+            <div class="grid lg:grid-cols-12 grid-cols-1" id="reserve-form">
+                <div class="lg:col-span-7 mt-8">
+                    <div class="bg-white dark:bg-slate-900 border-0 shadow rounded p-3">
+                        <form action="#">
+                            <div class="registration-form text-dark text-start">
+                                <div class="grid md:grid-cols-12 grid-cols-1 md:gap-0 gap-6">
+                                    <div class="lg:col-span-8 md:col-span-7">
+                                        <div class="filter-search-form relative filter-border">
+                                            <i class="uil uil-briefcase-alt icons"></i>
+                                            <input name="name" type="text" id="job-keyword" class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0" placeholder="Search your Keywords">
+                                        </div>
+                                    </div>
+
+                                    <div class="lg:col-span-4 md:col-span-5">
+                                        <input type="submit" id="search" name="search" style="height: 60px;" class="btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white searchbtn submit-btn w-full" value="Search">
+                                    </div>
+                                </div><!--end grid-->
+                            </div><!--end container-->
+                        </form>
+                    </div>
+                </div><!--ed col-->
+            </div><!--end grid-->
+
+            <div class="mt-4">
+                <span class="text-slate-400"><span class="text-dark">Popular Searches :</span> Designer, Developer, Web, IOS, PHP Senior Engineer</span>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="absolute inset-0 bg-emerald-600/5"></div>
+    <ul class="circles p-0 mb-0">
+        <li *ngFor="let item of logoImg" class="brand-img"><img [src]="item" class="size-9" alt=""></li>
+    </ul>
+</section><!--end section-->
+<div class="relative">
+    <div class="absolute block w-full h-auto bottom-[25px] z-1 start-0">
+        <a href="#" (click)="$event.preventDefault()"><i class="mdi mdi-arrow-down absolute top-0 start-0 end-0 text-center inline-flex items-center justify-center rounded-full bg-white dark:bg-slate-900 size-12 mx-auto shadow-md dark:shadow-gray-800"></i></a>
+    </div>
+
+    <div class="shape absolute start-0 end-0 sm:-bottom-px -bottom-[2px] overflow-hidden text-white dark:text-slate-900">
+        <svg class="w-full h-auto" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+
+<section class="relative md:py-24 py-16">
+    <div class="container md:pb-16">
+        <app-millions-of-job/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Jobs</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+
+        <app-popular-job-three/>
+        
+        <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+            <div class="md:col-span-12 text-center">
+                <a routerLink="/job-grid-two" class="btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600 duration-500 ease-in-out">See More Jobs <i class="uil uil-arrow-right align-middle"></i></a>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="container md:mt-24 md:pb-16 mt-16">
+        <app-best-companies/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+       <app-services/>
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Latest Blog or News</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+        </div><!--end grid-->
+
+        <app-blog/>
+    </div><!--end container-->
+</section>
+<app-footer/>
