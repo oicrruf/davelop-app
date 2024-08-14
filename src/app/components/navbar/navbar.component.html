@@ -1,219 +1,135 @@
-<nav id="topnav" class="defaultscroll is-sticky" [ngClass]="scrolled ? 'nav-sticky' :'' || bgLight ?  'bg-white dark:bg-slate-900' : '' " >
-    <div [ngClass]="navFull ? 'container-fluid container-fluid md:px-8 px-3' : 'container' ">
-        <!-- Logo container-->
-         <ng-container *ngIf="navLight; else elseTemplate">
-            <a class="logo" routerLink="/">
-                <div class="block sm:hidden">
-                    <img src="assets/images/logo-icon-40.png" class="h-10 inline-block dark:hidden"  alt="">
-                    <img src="assets/images/logo-icon-40-white.png" class="h-10 hidden dark:inline-block"  alt="">
-                </div>
-                <div class="sm:block hidden">
-                    <span class="inline-block dark:hidden">
-                        <img src="assets/images/logo-dark.png" class="h-[24px] l-dark" alt="">
-                        <img src="assets/images/logo-light.png" class="h-[24px] l-light" alt="">
-                    </span>
-                    <img src="assets/images/logo-white.png" class="h-[24px] hidden dark:inline-block" alt="">
-                </div>
-            </a>
-         </ng-container>
-         <ng-template #elseTemplate>
-            <a class="logo" routerLink="/">
-                <div class="block sm:hidden">
-                    <img src="assets/images/logo-icon-40.png" class="h-10 inline-block dark:hidden"  alt="">
-                    <img src="assets/images/logo-icon-40-white.png" class="h-10 hidden dark:inline-block"  alt="">
-                </div>
-                <div class="sm:block hidden">
-                    <img src="assets/images/logo-dark.png" class="h-[24px] inline-block dark:hidden" alt="">
-                    <img src="assets/images/logo-white.png" class="h-[24px] hidden dark:inline-block" alt="">
-                </div>
-            </a>
-         </ng-template>
-         
-        
-
-        
-        <!-- End Logo container-->
-
-        <!-- Start Mobile Toggle -->
-        <div class="menu-extras">
-            <div class="menu-item">
-                <a href="#" class="navbar-toggle" [ngClass]="showToggleMenu ? 'open' : '' " id="isToggle" (click)="toggleMenu()">
-                    <div class="lines">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </a>
-            </div>
+<nav
+  id="topnav"
+  class="defaultscroll is-sticky"
+  [ngClass]="
+    scrolled ? 'nav-sticky' : '' || bgLight ? 'bg-white dark:bg-slate-900' : ''
+  "
+>
+  <div
+    [ngClass]="
+      navFull ? 'container-fluid container-fluid md:px-8 px-3' : 'container'
+    "
+  >
+    <!-- Logo container-->
+    <ng-container *ngIf="navLight; else elseTemplate">
+      <a class="logo" routerLink="/">
+        <div class="block sm:hidden">
+          <img
+            src="assets/images/logo-icon-40.png"
+            class="h-10 inline-block dark:hidden"
+            alt=""
+          />
+          <img
+            src="assets/images/logo-icon-40-white.png"
+            class="h-10 hidden dark:inline-block"
+            alt=""
+          />
         </div>
-        <!-- End Mobile Toggle -->
+        <div class="sm:block hidden">
+          <span class="inline-block dark:hidden">
+            <img
+              src="assets/images/logo-dark.png"
+              class="h-[24px] l-dark"
+              alt=""
+            />
+            <img
+              src="assets/images/logo-light.png"
+              class="h-[24px] l-light"
+              alt=""
+            />
+          </span>
+          <img
+            src="assets/images/logo-white.png"
+            class="h-[24px] hidden dark:inline-block"
+            alt=""
+          />
+        </div>
+      </a>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <a class="logo" routerLink="/">
+        <div class="block sm:hidden">
+          <img
+            src="assets/images/logo-icon-40.png"
+            class="h-10 inline-block dark:hidden"
+            alt=""
+          />
+          <img
+            src="assets/images/logo-icon-40-white.png"
+            class="h-10 hidden dark:inline-block"
+            alt=""
+          />
+        </div>
+        <div class="sm:block hidden">
+          <img
+            src="assets/images/logo-dark.png"
+            class="h-[24px] inline-block dark:hidden"
+            alt=""
+          />
+          <img
+            src="assets/images/logo-white.png"
+            class="h-[24px] hidden dark:inline-block"
+            alt=""
+          />
+        </div>
+      </a>
+    </ng-template>
 
-        <!--Login button Start-->
-        <ul class="buy-button list-none mb-0">
-            <li class="inline-block mb-0">
-                <div class="relative top-[3px]">
-                    <i class="uil uil-search text-lg absolute top-[3px] end-3"></i>
-                    <input type="text" class="form-input h-9 pe-10 rounded-3xl sm:w-44 w-36 border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900" name="s" id="searchItem" placeholder="Search...">
-                </div>
-            </li>            
+    <!-- End Logo container-->
 
-            <li class="dropdown inline-block relative ps-1" (clickOutside)="closeOutSideClick($event)">
-                <button class="dropdown-toggle items-center" type="button" (click)="userDropdow($event)">
-                    <span class="btn btn-icon rounded-full bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white"><img src="assets/images/team/01.jpg" class="rounded-full" alt=""></span>
-                </button>
-                <!-- Dropdown menu -->
-                <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-44 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-700" [ngClass]="user ? '' : 'hidden' ">
-                    <ul class="py-2 text-start">
-                        <li>
-                            <a routerLink="/candidate-profile" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="user" class="size-4 me-2"></i>Profile</a>
-                        </li>
-                        <li>
-                            <a routerLink="/candidate-profile-setting" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="settings" class="size-4 me-2"></i>Settings</a>
-                        </li>
-                        <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
-                        <li>
-                            <a routerLink="/lock-screen" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="lock" class="size-4 me-2"></i>Lockscreen</a>
-                        </li>
-                        <li>
-                            <a routerLink="/login" class="flex items-center font-medium py-2 px-4 dark:text-white/70 hover:text-emerald-600 dark:hover:text-white"><i data-feather="log-out" class="size-4 me-2"></i>Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </li><!--end dropdown-->
-        </ul>
-        <!--Login button End-->
+    <!-- Start Mobile Toggle -->
+    <div class="menu-extras">
+      <div class="menu-item">
+        <a
+          href="#"
+          class="navbar-toggle"
+          [ngClass]="showToggleMenu ? 'open' : ''"
+          id="isToggle"
+          (click)="toggleMenu()"
+        >
+          <div class="lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- End Mobile Toggle -->
 
-        <div id="navigation" [ngClass]="showToggleMenu ? 'block' : 'hidden' ">
-            <!-- Navigation Menu-->
-            <ul class="navigation-menu" [ngClass]="navClass">
-                <li class="has-submenu parent-menu-item" [ngClass]="['/','/index-two', '/index-three', '/index-four', '/index-five','/index-six','/index-seven','/index-eight','/index-nine','/index-ten','/index-item'].includes(currentUrl) ? 'active' : '' ">
-                    <a href="#" (click)="openSubManu('/index-item')">Home</a><span class="menu-arrow"></span>
-                    <ul class="submenu" [ngClass]="['/','/index-two', '/index-three', '/index-four', '/index-five','/index-six','/index-seven','/index-eight','/index-nine','/index-ten','/index-item'].includes(subManu) ? 'open' : '' ">
-                        <li [ngClass]="currentUrl === '/' ? 'active' : '' "><a routerLink="/" class="sub-menu-item">Hero One</a></li>
-                        <li [ngClass]="currentUrl === '/index-two' ? 'active' : '' "><a routerLink="/index-two" class="sub-menu-item">Hero Two</a></li>
-                        <li [ngClass]="currentUrl === '/index-three' ? 'active' : '' "><a routerLink="/index-three" class="sub-menu-item">Hero Three</a></li>
-                        <li [ngClass]="currentUrl === '/index-four' ? 'active' : '' "><a routerLink="/index-four" class="sub-menu-item">Hero Four</a></li>
-                        <li [ngClass]="currentUrl === '/index-five' ? 'active' : '' "><a routerLink="/index-five" class="sub-menu-item">Hero Five</a></li>
-                        <li [ngClass]="currentUrl === '/index-six' ? 'active' : '' "><a routerLink="/index-six" class="sub-menu-item">Hero Six </a></li>
-                        <li [ngClass]="currentUrl === '/index-seven' ? 'active' : '' "><a routerLink="/index-seven" class="sub-menu-item">Hero Seven </a></li>
-                        <li [ngClass]="currentUrl === '/index-eight' ? 'active' : '' "><a routerLink="/index-eight" class="sub-menu-item">Hero Eight</a></li>
-                        <li [ngClass]="currentUrl === '/index-nine' ? 'active' : '' "><a routerLink="/index-nine" class="sub-menu-item">Hero Nine</a></li>
-                        <li [ngClass]="currentUrl === '/index-ten' ? 'active' : '' "><a routerLink="/index-ten" class="sub-menu-item">Hero Ten</a></li>
-                    </ul>
-                </li>
+    <!--Login button Start-->
+    <ul class="buy-button list-none mb-0">
+      <li class="inline-block mb-0">
+        <div class="relative top-[3px]">
+          <input
+            type="text"
+            class="mr-6 form-input h-9 pe-10 rounded-3xl sm:w-44 w-36 border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900"
+            name="s"
+            id="searchItem"
+            placeholder="Search..."
+          />
+        </div>
+      </li>
 
-                <li class="has-submenu parent-parent-menu-item" [ngClass]="['/job-item','/job-categories','/grid-item','/job-grid-one', '/job-grid-two', '/job-grid-three', '/job-grid-four','/list-item','/job-list-one', '/job-list-two', '/job-list-three', '/job-list-four','/job-list-five','/job-list-six','/detail-item','/job-detail-one', '/job-detail-two', '/job-detail-three','/job-apply','/job-post','/career'].includes(currentUrl) ? 'active' : '' "><a href="#" (click)="openSubManu('/job-item')"> Jobs </a><span class="menu-arrow"></span>
-                    <ul class="submenu" [ngClass]="['/job-item','/job-categories','/grid-item','/job-grid-one', '/job-grid-two', '/job-grid-three', '/job-grid-four','/list-item','/job-list-one', '/job-list-two', '/job-list-three', '/job-list-four','/job-list-five','/job-list-six','/detail-item','/job-detail-one', '/job-detail-two', '/job-detail-three','/job-apply','/job-post','/career'].includes(subManu) ? 'open' : '' ">
-                        <li [ngClass]="currentUrl === '/job-categories' ? 'active' : '' "><a routerLink="/job-categories" class="sub-menu-item">Job Categories</a></li>
-                
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/grid-item','/job-grid-one', '/job-grid-two', '/job-grid-three', '/job-grid-four'].includes(currentUrl) ? 'active' : '' ">
-                            <a href="javascript:void(0)" (click)="openSubManu('/grid-item')"> Job Grids </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/grid-item','/job-grid-one', '/job-grid-two', '/job-grid-three', '/job-grid-four'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/job-grid-one' ? 'active' : '' "><a routerLink="/job-grid-one" class="sub-menu-item">Job Grid One</a></li>
-                                <li [ngClass]="currentUrl === '/job-grid-two' ? 'active' : '' "><a routerLink="/job-grid-two" class="sub-menu-item">Job Grid Two</a></li>
-                                <li [ngClass]="currentUrl === '/job-grid-three' ? 'active' : '' "><a routerLink="/job-grid-three" class="sub-menu-item">Job Grid Three</a></li>
-                                <li [ngClass]="currentUrl === '/job-grid-four' ? 'active' : '' "><a routerLink="/job-grid-four" class="sub-menu-item">Job Grid Four </a></li>
-                            </ul>  
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/list-item','/job-list-one', '/job-list-two', '/job-list-three', '/job-list-four','/job-list-five','/job-list-six'].includes(currentUrl) ? 'active' : '' ">
-                            <a href="javascript:void(0)" (click)="openSubManu('/list-item')"> Job Lists </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/list-item','/job-list-one', '/job-list-two', '/job-list-three', '/job-list-four','/job-list-five','/job-list-six'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/job-list-one' ? 'active' : '' "><a routerLink="/job-list-one" class="sub-menu-item">Job List One</a></li>
-                                <li [ngClass]="currentUrl === '/job-list-two' ? 'active' : '' "><a routerLink="/job-list-two" class="sub-menu-item">Job List Two</a></li>
-                                <li [ngClass]="currentUrl === '/job-list-three' ? 'active' : '' "><a routerLink="/job-list-three" class="sub-menu-item">Job List Three</a></li>
-                                <li [ngClass]="currentUrl === '/job-list-four' ? 'active' : '' "><a routerLink="/job-list-four" class="sub-menu-item">Job List Four</a></li>
-                                <li [ngClass]="currentUrl === '/job-list-five' ? 'active' : '' "><a routerLink="/job-list-five" class="sub-menu-item">Job List Five </a></li>
-                                <li [ngClass]="currentUrl === '/job-list-six' ? 'active' : '' "><a routerLink="/job-list-six" class="sub-menu-item">Job List Six </a></li>
-                            </ul>  
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/detail-item','/job-detail-one', '/job-detail-two', '/job-detail-three'].includes(currentUrl) ? 'active' : '' ">
-                            <a href="javascript:void(0)" (click)="openSubManu('/detail-item')"> Job Detail </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/detail-item','/job-detail-one', '/job-detail-two', '/job-detail-three'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/job-detail-one' ? 'active' : '' "><a routerLink="/job-detail-one" class="sub-menu-item">Job Detail One</a></li>
-                                <li [ngClass]="currentUrl === '/job-detail-two' ? 'active' : '' "><a routerLink="/job-detail-two" class="sub-menu-item">Job Detail Two</a></li>
-                                <li [ngClass]="currentUrl === '/job-detail-three' ? 'active' : '' "><a routerLink="/job-detail-three" class="sub-menu-item">Job Detail Three</a></li>
-                            </ul>  
-                        </li>
-        
-                        <li [ngClass]="currentUrl === '/job-apply' ? 'active' : '' "><a routerLink="/job-apply" class="sub-menu-item">Job Apply</a></li>
-        
-                        <li [ngClass]="currentUrl === '/job-post' ? 'active' : '' "><a routerLink="/job-post" class="sub-menu-item">Job Post </a></li>
-        
-                        <li [ngClass]="currentUrl === '/career' ? 'active' : '' "><a routerLink="/career" class="sub-menu-item">Career </a></li>
-                    </ul>  
-                </li>
-        
-                <li class="has-submenu parent-parent-menu-item" [ngClass]="['/page-item','/aboutus', '/services', '/pricing','/employer-item','/employer-list', '/employer-profile','/candidate-item','/candidate-list', '/candidate-profile','/candidate-profile-setting','/help-item','/helpcenter-overview', '/helpcenter-faqs','/helpcenter-guides','/helpcenter-support','/blog-item','/blogs', '/blog-detail','/auth-item','/login', '/signup','/reset-password','/lock-screen','/utility-item','/terms', '/privacy','/special-item','/comingsoon', '/maintenance','/error','/thankyou'].includes(currentUrl) ? 'active' : '' ">
-                    <a href="javascript:void(0)" (click)="openSubManu('/page-item')">Pages</a><span class="menu-arrow"></span>
-                    <ul class="submenu" [ngClass]="['/page-item','/aboutus', '/services', '/pricing','/employer-item','/employer-list', '/employer-profile','/candidate-item','/candidate-list', '/candidate-profile','/candidate-profile-setting','/help-item','/helpcenter-overview', '/helpcenter-faqs','/helpcenter-guides','/helpcenter-support','/blog-item','/blogs', '/blog-detail','/auth-item','/login', '/signup','/reset-password','/lock-screen','/utility-item','/terms', '/privacy','/special-item','/comingsoon', '/maintenance','/error','/thankyou'].includes(subManu) ? 'open' : '' ">
-                        <li [ngClass]="currentUrl === '/aboutus' ? 'active' : '' "><a routerLink="/aboutus" class="sub-menu-item">About Us</a></li>
-                        <li [ngClass]="currentUrl === '/services' ? 'active' : '' "><a routerLink="/services" class="sub-menu-item">Services</a></li>
-                        <li [ngClass]="currentUrl === '/pricing' ? 'active' : '' "><a routerLink="/pricing" class="sub-menu-item">Pricing </a></li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/employer-item','/employer-list', '/employer-profile'].includes(currentUrl) ? 'active' : '' ">
-                            <a href="javascript:void(0)" (click)="openSubManu('/employer-item')">Employers</a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/employer-item','/employer-list', '/employer-profile'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/employer-list' ? 'active' : '' "><a routerLink="/employer-list" class="sub-menu-item">Employers</a></li>
-                                <li [ngClass]="currentUrl === '/employer-profile' ? 'active' : '' "><a routerLink="/employer-profile" class="sub-menu-item">Employer Profile</a></li>
-                            </ul>
-                        </li>
-                
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/candidate-item','/candidate-list', '/candidate-profile','/candidate-profile-setting'].includes(currentUrl) ? 'active' : '' ">
-                            <a href="javascript:void(0)" (click)="openSubManu('/candidate-item')">Candidates </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/candidate-item','/candidate-list', '/candidate-profile','/candidate-profile-setting'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/candidate-list' ? 'active' : '' "><a routerLink="/candidate-list" class="sub-menu-item">Candidates</a></li>
-                                <li [ngClass]="currentUrl === '/candidate-profile' ? 'active' : '' "><a routerLink="/candidate-profile" class="sub-menu-item">Candidate Profile</a></li>
-                                <li [ngClass]="currentUrl === '/candidate-profile-setting' ? 'active' : '' "><a routerLink="/candidate-profile-setting" class="sub-menu-item">Profile Settings </a></li>
-                            </ul>
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/help-item','/helpcenter-overview', '/helpcenter-faqs','/helpcenter-guides','/helpcenter-support'].includes(currentUrl) ? 'active' : '' ">
-                            <a href="javascript:void(0)" (click)="openSubManu('/help-item')"> Helpcenter </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/help-item','/helpcenter-overview', '/helpcenter-faqs','/helpcenter-guides','/helpcenter-support'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/helpcenter-overview' ? 'active' : '' "><a routerLink="/helpcenter-overview" class="sub-menu-item">Overview</a></li>
-                                <li [ngClass]="currentUrl === '/helpcenter-faqs' ? 'active' : '' "><a routerLink="/helpcenter-faqs" class="sub-menu-item">FAQs</a></li>
-                                <li [ngClass]="currentUrl === '/helpcenter-guides' ? 'active' : '' "><a routerLink="/helpcenter-guides" class="sub-menu-item">Guides</a></li>
-                                <li [ngClass]="currentUrl === '/helpcenter-support' ? 'active' : '' "><a routerLink="/helpcenter-support" class="sub-menu-item">Support</a></li>
-                            </ul>  
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/blog-item','/blogs', '/blog-detail'].includes(currentUrl) ? 'active' : '' "><a href="javascript:void(0)" (click)="openSubManu('/blog-item')"> Blog </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/blog-item','/blogs', '/blog-detail'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/blogs' ? 'active' : '' "><a routerLink="/blogs" class="sub-menu-item"> Blogs</a></li>
-                                <li [ngClass]="currentUrl === '/blog-detail' ? 'active' : '' "><a routerLink="/blog-detail" class="sub-menu-item"> Blog Detail</a></li>
-                            </ul> 
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/auth-item','/login', '/signup','/reset-password','/lock-screen'].includes(currentUrl) ? 'active' : '' "><a href="javascript:void(0)" (click)="openSubManu('/auth-item')"> Auth Pages </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/auth-item','/login', '/signup','/reset-password','/lock-screen'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/login' ? 'active' : '' "><a routerLink="/login" class="sub-menu-item"> Login</a></li>
-                                <li [ngClass]="currentUrl === '/signup' ? 'active' : '' "><a routerLink="/signup" class="sub-menu-item"> Signup</a></li>
-                                <li [ngClass]="currentUrl === '/reset-password' ? 'active' : '' "><a routerLink="/reset-password" class="sub-menu-item"> Forgot Password</a></li>
-                                <li [ngClass]="currentUrl === '/lock-screen' ? 'active' : '' "><a routerLink="/lock-screen" class="sub-menu-item"> Lock Screen</a></li>
-                            </ul> 
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/utility-item','/terms', '/privacy'].includes(currentUrl) ? 'active' : '' "><a href="javascript:void(0)" (click)="openSubManu('/utility-item')"> Utility </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/utility-item','/terms', '/privacy'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/terms' ? 'active' : '' "><a routerLink="/terms" class="sub-menu-item">Terms of Services</a></li>
-                                <li [ngClass]="currentUrl === '/privacy' ? 'active' : '' "><a routerLink="/privacy" class="sub-menu-item">Privacy Policy</a></li>
-                            </ul>  
-                        </li>
-
-                        <li class="has-submenu parent-menu-item" [ngClass]="['/special-item','/comingsoon', '/maintenance','/error','/thankyou'].includes(currentUrl) ? 'active' : '' "><a href="javascript:void(0)" (click)="openSubManu('/special-item')"> Special </a><span class="submenu-arrow"></span>
-                            <ul class="submenu" [ngClass]="['/special-item','/comingsoon', '/maintenance','/error','/thankyou'].includes(subManu) ? 'open' : '' ">
-                                <li [ngClass]="currentUrl === '/comingsoon' ? 'active' : '' "><a routerLink="/comingsoon" class="sub-menu-item"> Coming Soon</a></li>
-                                <li [ngClass]="currentUrl === '/maintenance' ? 'active' : '' "><a routerLink="/maintenance" class="sub-menu-item"> Maintenance</a></li>
-                                <li [ngClass]="currentUrl === '/error' ? 'active' : '' "><a routerLink="/error" class="sub-menu-item"> 404!</a></li>
-                                <li [ngClass]="currentUrl === '/thankyou' ? 'active' : '' "><a routerLink="/thankyou" class="sub-menu-item"> Thank you</a></li>
-                            </ul> 
-                        </li>
-                    </ul>
-                </li>
-                <li [ngClass]="currentUrl === '/contact' ? 'active' : '' "><a routerLink="/contact" class="sub-menu-item">Contact</a></li>
-            </ul><!--end navigation menu-->
-        </div><!--end navigation-->
-    </div><!--end container-->
+      <li
+        class="dropdown inline-block relative ps-1"
+        (clickOutside)="closeOutSideClick($event)"
+      >
+        <button
+          class="dropdown-toggle items-center"
+          type="button"
+          (click)="userDropdow($event)"
+        >
+          <span
+            class="btn btn-icon rounded-full bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-white"
+            >VR</span
+          >
+        </button>
+        <!-- Dropdown menu -->
+      </li>
+      <!--end dropdown-->
+    </ul>
+    <!--Login button End-->
+  </div>
+  <!--end container-->
 </nav>
