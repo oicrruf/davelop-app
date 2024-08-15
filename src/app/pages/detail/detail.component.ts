@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NavbarComponent } from '../../../components/navbar/navbar.component';
-import Candidate from '../../../data/candidate.json';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import Candidate from '../../data/candidate.json';
 
 @Component({
-  selector: 'app-candidate-profile',
+  selector: 'app-detail',
   standalone: true,
   imports: [CommonModule, RouterLink, NavbarComponent],
-  templateUrl: './candidate-profile.component.html',
-  styleUrl: './candidate-profile.component.scss',
+  templateUrl: './detail.component.html',
+  styleUrl: './detail.component.scss',
 })
-export class CandidateProfileComponent {
+export class DetailComponent {
   candidate = Candidate;
   id: any;
   data: any;

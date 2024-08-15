@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { IndexNineComponent } from './pages/index/index-nine/index-nine.component';
-import { JobGridFourComponent } from './pages/job/job-grid-four/job-grid-four.component';
-import { CandidateProfileComponent } from './pages/candidate/candidate-profile/candidate-profile.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ResultComponent } from './pages/result/result.component';
+import { DetailComponent } from './pages/detail/detail.component';
 
 // import { LoginComponent } from './pages/auth/login/login.component';
 // import { SignupComponent } from './pages/auth/signup/signup.component';
@@ -9,10 +9,9 @@ import { CandidateProfileComponent } from './pages/candidate/candidate-profile/c
 // import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
-  { path: '', component: IndexNineComponent },
-  { path: 'aplicacion/:id', component: CandidateProfileComponent },
-  { path: 'aplicaciones', component: JobGridFourComponent },
-  { path: 'candidate-profile/:id', component: CandidateProfileComponent },
+  { path: '', component: HomeComponent },
+  { path: 'aplicacion/:id', component: DetailComponent },
+  { path: 'aplicaciones', component: ResultComponent },
   // { path: 'login', component: LoginComponent },
   // { path: 'signup', component: SignupComponent },
   // { path: 'signup-success', component: SignupSuccessComponent },
