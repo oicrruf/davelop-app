@@ -8,21 +8,21 @@
           <h4
             class="lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 font-bold"
           >
-            Start Building <br />
-            Your <span class="text-red-600">Dream Career</span><br />
-            with Jobstack
+            ¡Bienvenido a <span class="text-red-600">GPS</span><br />
+            para el Desarrollo!
           </h4>
           <p class="text-lg max-w-xl">
-            Find Jobs, Employment & Career Opportunities. Some of the companies
-            we've helped recruit excellent applicants over the years.
+            Esta nueva herramienta diseñada especialmente para impulsar tu
+            crecimiento profesional y personal. Esta será tu guía en el camino
+            hacia el autodesarrollo.
           </p>
-
+          <p class="mt-2">¡Tu futuro empieza hoy!</p>
           <div class="grid lg:grid-cols-12 grid-cols-1" id="reserve-form">
             <div class="lg:col-span-10 mt-8">
               <div
                 class="bg-white dark:bg-slate-900 border-0 shadow rounded p-3"
               >
-                <form action="#">
+                <form (ngSubmit)="onSubmit()">
                   <div class="registration-form text-dark text-start">
                     <div
                       class="grid md:grid-cols-12 grid-cols-1 md:gap-0 gap-6"
@@ -34,11 +34,19 @@
                             type="text"
                             id="job-keyword"
                             class="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
-                            placeholder="Search your Keywords"
+                            placeholder="Ingresa tu número de DUI"
                           />
+                          @if (submitted() && f['search'].errors) { @if
+                          (f['search'].errors['required']) {
+                          <p
+                            id="outlined_error_help"
+                            class="mt-2 text-xs text-red-600 dark:text-red-400"
+                          >
+                            {{ errors().search.required }}
+                          </p>
+                          } }
                         </div>
                       </div>
-
                       <div class="lg:col-span-4 md:col-span-5">
                         <input
                           type="submit"

@@ -24,18 +24,13 @@
           {{ data?.name ? data?.name : "Calvin Carlo" }}
         </h5>
         <p class="text-slate-400 mt-4">
-          Obviously I'M Web Developer. Web Developer with over 3 years of
-          experience. Experienced with all stages of the development cycle for
-          dynamic web projects. The as opposed to using 'Content here, content
-          here', making it look like readable English.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+          temporibus molestias in ipsum tempora voluptatum iusto perferendis
+          unde soluta expedita, distinctio cupiditate provident quae fuga
+          numquam debitis sunt, nobis laborum.
         </p>
-        <p class="text-slate-400 mt-4">
-          Data Structures and Algorithms are the heart of programming. Initially
-          most of the developers do not realize its importance but when you will
-          start your career in software development, you will find your code is
-          either taking too much time or taking too much space.
-        </p>
-        <h4 class="mt-6 text-xl font-semibold">Skills :</h4>
+
+        <h4 class="mt-6 text-xl font-semibold">Destrezas:</h4>
         <div class="grid lg:grid-cols-2 grid-cols-1 mt-6 gap-6">
           <div *ngFor="let item of skillData">
             <div class="flex justify-between mb-2">
@@ -46,59 +41,58 @@
               class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-[6px]"
             >
               <div
-                class="bg-emerald-600 h-[6px] rounded-full"
+                class="bg-red-500 h-[6px] rounded-full"
                 [ngStyle]="{ width: item.percentage }"
               ></div>
             </div>
           </div>
         </div>
 
-        <h4 class="mt-6 text-xl font-semibold">Experience :</h4>
+        <h4 class="mt-6 text-xl font-semibold">Áreas de Mejora :</h4>
 
         <div class="flex mt-6">
-          <div class="text-slate-400 font-semibold min-w-[80px] text-center">
-            <img
-              src="assets/images/company/shree-logo.png"
-              class="size-16 mx-auto mb-2 block"
-              alt=""
-            />
-            2019-22
-          </div>
-
-          <div class="ms-4">
-            <h5 class="text-lg font-medium mb-0">Full Stack Developer</h5>
-            <span class="text-slate-400 company-university"
-              >Shreethemes - India</span
-            >
+          <div class="">
+            <h5 class="text-lg font-bold mb-4">Pensamiento Estratégico</h5>
+            <h6 class="text-md font-thin mb-0">20% - Aprendizaje Formal</h6>
             <p class="text-slate-400 mt-2 mb-0">
-              It seems that only fragments of the original text remain in the
-              Lorem Ipsum texts used today. One may speculate that over the
-              course of time certain letters were added or deleted at various
-              positions within the text.
+              <span class="text-slate-900"
+                >Toma de Decisiones en Entornos Complejos:</span
+              >
+              Busca cursos que te enseñan cómo tomar decisiones efectivas, usar
+              técnicas analíticas y desarrollar estrategias para manejar la
+              incertidumbre. Estos cursos te brindarán las herramientas
+              necesarias para enfrentar desafíos con confianza y tomar
+              decisiones más acertadas en tu entorno laboral.
             </p>
-          </div>
-        </div>
-
-        <div class="flex mt-6">
-          <div class="text-slate-400 font-semibold min-w-[80px] text-center">
-            <img
-              src="assets/images/company/circle-logo.png"
-              class="size-16 mx-auto mb-2 block"
-              alt=""
-            />
-            2017-19
-          </div>
-
-          <div class="ms-4">
-            <h5 class="text-lg font-medium mb-0">Back-end Developer</h5>
-            <span class="text-slate-400 company-university"
-              >CircleCI - U.S.A.</span
-            >
             <p class="text-slate-400 mt-2 mb-0">
-              It seems that only fragments of the original text remain in the
-              Lorem Ipsum texts used today. One may speculate that over the
-              course of time certain letters were added or deleted at various
-              positions within the text.
+              <span class="text-slate-900"
+                >Liderazgo y Toma de Decisiones:</span
+              >
+              Explora programas que combinan la toma de decisiones con el
+              liderazgo y muestran cómo estas decisiones impactan la dirección
+              estratégica. Estos cursos te ayudarán a entender cómo tus
+              decisiones pueden guiar el rumbo de tu equipo o empresa, y a
+              mejorar tu capacidad para liderar con eficacia en un entorno
+              dinámico.
+            </p>
+            <h6 class="text-md font-thin mb-0 mt-5">
+              70% - Aprendizaje Experiencial
+            </h6>
+            <p class="text-slate-400 mt-2 mb-0">
+              <span class="text-slate-900"
+                >Toma de Decisiones en Proyectos:
+              </span>
+              Participa en proyectos que requieran decisiones críticas. Analiza
+              el impacto de cada decisión y ajusta estrategias basadas en
+              resultados.
+            </p>
+            <p class="text-slate-400 mt-2 mb-0">
+              <span class="text-slate-900">Simulaciones de Negocios: </span>
+              Involúcrate en proyectos donde se requiera tomar decisiones clave.
+              Evalúa el impacto de cada decisión y ajusta las estrategias según
+              los resultados que obtengas. Aprender de cada experiencia te
+              ayudará a afinar tus habilidades y a mejorar los resultados de
+              futuros proyectos.
             </p>
           </div>
         </div>
@@ -130,63 +124,9 @@
                 ><span class="text-slate-400 me-3">Email :</span></span
               >
 
-              <span>thomas&#64;mail.com</span>
+              <span>m.salmeron&#64;davivienda.com</span>
             </li>
-            <li class="flex justify-between mt-3 items-center font-medium">
-              <span
-                ><i
-                  data-feather="gift"
-                  class="size-4 text-slate-400 me-3 inline"
-                ></i
-                ><span class="text-slate-400 me-3">D.O.B. :</span></span
-              >
 
-              <span>31st Dec, 1996</span>
-            </li>
-            <li class="flex justify-between mt-3 items-center font-medium">
-              <span
-                ><i
-                  data-feather="home"
-                  class="size-4 text-slate-400 me-3 inline"
-                ></i
-                ><span class="text-slate-400 me-3">Address :</span></span
-              >
-
-              <span>15 Razy street</span>
-            </li>
-            <li class="flex justify-between mt-3 items-center font-medium">
-              <span
-                ><i
-                  data-feather="map-pin"
-                  class="size-4 text-slate-400 me-3 inline"
-                ></i
-                ><span class="text-slate-400 me-3">City :</span></span
-              >
-
-              <span>London</span>
-            </li>
-            <li class="flex justify-between mt-3 items-center font-medium">
-              <span
-                ><i
-                  data-feather="globe"
-                  class="size-4 text-slate-400 me-3 inline"
-                ></i
-                ><span class="text-slate-400 me-3">Country :</span></span
-              >
-
-              <span>UK</span>
-            </li>
-            <li class="flex justify-between mt-3 items-center font-medium">
-              <span
-                ><i
-                  data-feather="server"
-                  class="size-4 text-slate-400 me-3 inline"
-                ></i
-                ><span class="text-slate-400 me-3">Postal Code :</span></span
-              >
-
-              <span>521452</span>
-            </li>
             <li class="flex justify-between mt-3 items-center font-medium">
               <span
                 ><i
@@ -196,7 +136,7 @@
                 ><span class="text-slate-400 me-3">Mobile :</span></span
               >
 
-              <span>(+125) 1542-8452</span>
+              <span>(+503) 7551-9089</span>
             </li>
           </ul>
         </div>

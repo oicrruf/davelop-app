@@ -24,28 +24,28 @@ export class DetailComponent {
   }
   skillData = [
     {
-      title: 'WordPress',
-      percentage: '80%',
+      title: 'Pensamiento Estratégico',
+      percentage: '46.89%',
     },
     {
-      title: 'JavaScript',
-      percentage: '79%',
+      title: 'Desarrollo de las Personas',
+      percentage: '62.29%',
     },
     {
-      title: 'HTML',
-      percentage: '95%',
+      title: 'Liderazgo',
+      percentage: '48%',
     },
     {
-      title: 'Figma',
-      percentage: '85%',
+      title: 'Innovación',
+      percentage: '69.5%',
     },
     {
-      title: 'Photoshop',
-      percentage: '70%',
+      title: 'Toma de Decisiones',
+      percentage: '80.29%',
     },
     {
-      title: 'Illustration',
-      percentage: '65%',
+      title: 'Análisis de Problemas',
+      percentage: '72.5%',
     },
   ];
 }
