@@ -14,7 +14,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -25,10 +25,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   public data: any;
-  // public httpClient = inject(HttpClient);
+  public httpClient = inject(HttpClient);
 
   public search: FormGroup = new FormGroup({
-    search: new FormControl(''),
+    dui: new FormControl(''),
   });
 
   public httpOptions: Object = {
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.search = this.formBuilder.group({
-      search: ['', Validators.required],
+      dui: ['', Validators.required],
     });
   }
 
@@ -49,25 +49,25 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('entra', this.search.value);
     this.submitted = signal(true);
 
     if (this.search.invalid) {
       return;
     }
 
-    // this.httpClient
-    //   .post(`${environment.apiUrl}/auth/login`, this.search.value)
-    //   .subscribe({
-    //     next: (data: any) => {
-    //       this.data = data;
-
-    //       // this.router.navigate(['actualizacion-de-informacion/info_personal']);
-    //     },
-    //     error: (err: any) => {
-    //       this.submitted = signal(false);
-    //       this.responseError = signal(err.error.message);
-    //     },
-    //   });
+    this.httpClient
+      .post(`${environment.apiUrl}/employee/find`, this.search.value)
+      .subscribe({
+        next: (data: any) => {
+          this.data = data;
+          this.router.navigate(['aplicaciones'], { state: { employee: data } });
+        },
+        error: (err: any) => {
+          this.submitted = signal(false);
+          this.responseError = signal(err.error.message);
+        },
+      });
   }
 
   onReset(): void {
@@ -78,6 +78,6 @@ export class HomeComponent implements OnInit {
   submitted = signal(false);
   responseError = signal('');
   errors = signal({
-    search: { required: 'Tu nmero de identificación es requerido' },
+    dui: { required: 'Tu número de identificación es requerido' },
   });
 }

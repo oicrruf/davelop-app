@@ -32,17 +32,17 @@
 
         <h4 class="mt-6 text-xl font-semibold">Destrezas:</h4>
         <div class="grid lg:grid-cols-2 grid-cols-1 mt-6 gap-6">
-          <div *ngFor="let item of skillData">
+          <div *ngFor="let item of application?.competences">
             <div class="flex justify-between mb-2">
-              <span class="text-slate-400">{{ item.title }}</span>
-              <span class="text-slate-400">{{ item.percentage }}</span>
+              <span class="text-slate-400">{{ item.name }}</span>
+              <span class="text-slate-400">{{ item.score }}</span>
             </div>
             <div
               class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-[6px]"
             >
               <div
                 class="bg-red-500 h-[6px] rounded-full"
-                [ngStyle]="{ width: item.percentage }"
+                [ngStyle]="{ width: item.performance + '%' }"
               ></div>
             </div>
           </div>
@@ -50,9 +50,12 @@
 
         <h4 class="mt-6 text-xl font-semibold">Áreas de Mejora :</h4>
 
-        <div class="flex mt-6">
+        <div
+          class="flex mt-6"
+          *ngFor="let item of application?.recommendations"
+        >
           <div class="">
-            <h5 class="text-lg font-bold mb-4">Pensamiento Estratégico</h5>
+            <h5 class="text-lg font-bold mb-4">{{ item.name }}</h5>
             <h6 class="text-md font-thin mb-0">20% - Aprendizaje Formal</h6>
             <p class="text-slate-400 mt-2 mb-0">
               <span class="text-slate-900"
