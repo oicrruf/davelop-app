@@ -1,6 +1,5 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,7 +8,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ import { environment } from '../../../environments/environment';
 export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router // private authService: AuthService
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   public data: any;
@@ -49,7 +51,8 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('entra', this.search.value);
+    let dui = Number(this.search.value.dui.replace('-', ''));
+
     this.submitted = signal(true);
 
     if (this.search.invalid) {
@@ -57,11 +60,25 @@ export class HomeComponent implements OnInit {
     }
 
     this.httpClient
-      .post(`${environment.apiUrl}/employee/find`, this.search.value)
+      .post(`${environment.apiUrl}/employee/find`, { dui: dui.toString() })
       .subscribe({
         next: (data: any) => {
           this.data = data;
-          this.router.navigate(['aplicaciones'], { state: { employee: data } });
+          if (this.data !== null) {
+            const { dui, email, id, name } = this.data;
+            this.authService.result({
+              id,
+              name,
+              dui,
+              email,
+            });
+
+            this.router.navigate(['aplicaciones'], {
+              state: { employee: data },
+            });
+          } else {
+            this.not_found = signal(true);
+          }
         },
         error: (err: any) => {
           this.submitted = signal(false);
@@ -75,9 +92,13 @@ export class HomeComponent implements OnInit {
     this.search.reset();
   }
 
+  not_found = signal(false);
   submitted = signal(false);
   responseError = signal('');
   errors = signal({
-    dui: { required: 'Tu número de identificación es requerido' },
+    dui: {
+      required: 'Tu número de identificación es requerido',
+      not_found: 'Tu número de identificación no tiene pruebas registradas',
+    },
   });
 }
