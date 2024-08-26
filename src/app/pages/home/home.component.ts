@@ -65,12 +65,13 @@ export class HomeComponent implements OnInit {
         next: (data: any) => {
           this.data = data;
           if (this.data !== null) {
-            const { dui, email, id, name } = this.data;
+            const { dui, email, id, name, position } = this.data;
             this.authService.result({
               id,
               name,
               dui,
               email,
+              position,
             });
 
             this.router.navigate(['aplicaciones'], {

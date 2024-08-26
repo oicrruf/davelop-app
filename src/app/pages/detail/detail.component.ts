@@ -5,6 +5,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import Candidate from '../../data/candidate.json';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-detail',
@@ -18,10 +19,16 @@ export class DetailComponent implements OnInit {
   data: any;
   httpClient = inject(HttpClient);
   application: any;
+  userData: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private userInfo: AuthService) {}
 
   ngOnInit(): void {
+    if (this.userInfo !== null) {
+      let userFromSession = JSON.parse(this.userInfo.getToken() || '');
+      this.userData = userFromSession;
+    }
+
     this.id = this.route.snapshot.params['id'];
     console.log(this.route.snapshot.params['id']);
     this.httpClient

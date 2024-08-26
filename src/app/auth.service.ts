@@ -31,8 +31,8 @@ export class AuthService {
   // }
 
   getToken(): string | null {
-    if (localStorage.getItem('@user')) {
-      return localStorage.getItem('@user');
+    if (sessionStorage.getItem('@user')) {
+      return sessionStorage.getItem('@user');
     } else return null;
   }
 }
