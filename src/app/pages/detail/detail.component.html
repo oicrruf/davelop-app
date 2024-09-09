@@ -30,7 +30,7 @@
           numquam debitis sunt, nobis laborum.
         </p>
 
-        <h4 class="mt-6 text-xl font-semibold">Destrezas:</h4>
+        <h4 class="mt-6 text-2xl font-semibold">Destrezas:</h4>
         <div class="grid lg:grid-cols-2 grid-cols-1 mt-6 gap-6">
           <div *ngFor="let item of application?.competences">
             <div class="flex justify-between mb-2">
@@ -48,55 +48,36 @@
           </div>
         </div>
 
-        <h4 class="mt-10 text-xl font-semibold">Áreas de Mejora :</h4>
-
+        <h4 class="mt-10 text-2xl font-semibold">Áreas de Mejora :</h4>
         <div
-          class="flex mt-6"
+          class="flex mt-3"
           *ngFor="let item of application?.recommendations"
         >
-          <div class="">
-            <h5 class="text-lg font-bold mb-4">{{ item.name }}</h5>
-            <h6 class="text-md font-thin mb-0">20% - Aprendizaje Formal</h6>
-            <p class="text-slate-400 mt-2 mb-0">
-              <span class="text-slate-900"
-                >Toma de Decisiones en Entornos Complejos:</span
+          <div class="mt-6">
+            <h3 class="text-xl font-bold">{{ item.name }}</h3>
+
+            <div *ngFor="let detail of item?.detail">
+              <h5 class="text-lg font-semibold mb-0 mt-5">
+                {{ detail.title }}
+              </h5>
+              <div
+                class="mt-4"
+                *ngFor="let recommendation of detail?.recommendations"
               >
-              Busca cursos que te enseñan cómo tomar decisiones efectivas, usar
-              técnicas analíticas y desarrollar estrategias para manejar la
-              incertidumbre. Estos cursos te brindarán las herramientas
-              necesarias para enfrentar desafíos con confianza y tomar
-              decisiones más acertadas en tu entorno laboral.
-            </p>
-            <p class="text-slate-400 mt-2 mb-0">
-              <span class="text-slate-900"
-                >Liderazgo y Toma de Decisiones:</span
-              >
-              Explora programas que combinan la toma de decisiones con el
-              liderazgo y muestran cómo estas decisiones impactan la dirección
-              estratégica. Estos cursos te ayudarán a entender cómo tus
-              decisiones pueden guiar el rumbo de tu equipo o empresa, y a
-              mejorar tu capacidad para liderar con eficacia en un entorno
-              dinámico.
-            </p>
-            <h6 class="text-md font-thin mb-0 mt-5">
-              70% - Aprendizaje Experiencial
-            </h6>
-            <p class="text-slate-400 mt-2 mb-0">
-              <span class="text-slate-900"
-                >Toma de Decisiones en Proyectos:
-              </span>
-              Participa en proyectos que requieran decisiones críticas. Analiza
-              el impacto de cada decisión y ajusta estrategias basadas en
-              resultados.
-            </p>
-            <p class="text-slate-400 mt-2 mb-0">
-              <span class="text-slate-900">Simulaciones de Negocios: </span>
-              Involúcrate en proyectos donde se requiera tomar decisiones clave.
-              Evalúa el impacto de cada decisión y ajusta las estrategias según
-              los resultados que obtengas. Aprender de cada experiencia te
-              ayudará a afinar tus habilidades y a mejorar los resultados de
-              futuros proyectos.
-            </p>
+                <h6 class="text-lg font-bold mb-3">
+                  {{ recommendation.name }}:
+                </h6>
+                <p
+                  *ngFor="let detail of recommendation.detail"
+                  class="text-md font-light mb-2"
+                >
+                  <span class="text-slate-900 font-semibold">
+                    {{ detail.split(":")[0] }}:</span
+                  >
+                  {{ detail.split(":")[1] }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

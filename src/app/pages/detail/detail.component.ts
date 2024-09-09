@@ -20,6 +20,7 @@ export class DetailComponent implements OnInit {
   httpClient = inject(HttpClient);
   application: any;
   userData: any;
+  detail: any;
 
   constructor(private route: ActivatedRoute, private userInfo: AuthService) {}
 
