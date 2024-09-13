@@ -21,6 +21,7 @@ export class DetailComponent implements OnInit {
   application: any;
   userData: any;
   detail: any;
+  type: any;
 
   constructor(private route: ActivatedRoute, private userInfo: AuthService) {}
 
@@ -31,14 +32,16 @@ export class DetailComponent implements OnInit {
     }
 
     this.id = this.route.snapshot.params['id'];
-    console.log(this.route.snapshot.params['id']);
+    this.type = this.route.snapshot.queryParams['type'];
+    console.log(this.route.snapshot);
     this.httpClient
-      .post(`${environment.apiUrl}/administrative/apply`, {
+      .post(`${environment.apiUrl}/${this.type}/apply`, {
         applyHash: this.route.snapshot.params['id'],
       })
       .subscribe({
         next: (data: any) => {
           this.application = data;
+          console.log(this.application);
         },
         error: (err: any) => console.error(err),
       });

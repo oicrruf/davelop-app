@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import JobData from '../../data/job.json';
+import { forkJoin, mergeAll } from 'rxjs';
 
 @Component({
   selector: 'app-result',
@@ -15,9 +16,11 @@ import JobData from '../../data/job.json';
 })
 export class ResultComponent implements OnInit {
   jobData = JobData;
-
   employee: any;
-  applies: any;
+  applies: any = [];
+
+  administrative: any;
+  commercial: any;
   httpClient = inject(HttpClient);
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -25,16 +28,18 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.employee);
+    const administrative = this.httpClient.get(
+      `${environment.apiUrl}/administrative/applies/${this.employee.id}`
+    );
+    const commercial = this.httpClient.get(
+      `${environment.apiUrl}/commercial/applies/${this.employee.id}`
+    );
 
-    this.httpClient
-      .get(`${environment.apiUrl}/administrative/applies/${this.employee.id}`)
-      .subscribe({
-        next: (data: any) => {
-          this.applies = data;
-          console.log(data);
-        },
-        error: (err: any) => console.error(err),
-      });
+    forkJoin([administrative, commercial]).subscribe((results) => {
+      this.administrative = results[0];
+      this.commercial = results[1];
+
+      console.log(this.administrative);
+    });
   }
 }
