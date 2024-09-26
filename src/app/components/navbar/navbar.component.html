@@ -10,7 +10,6 @@
       navFull ? 'container-fluid container-fluid md:px-8 px-3' : 'container'
     "
   >
-    <!-- Logo container-->
     <ng-container *ngIf="navLight; else elseTemplate">
       <a class="logo" routerLink="/">
         <div class="block sm:hidden">
@@ -71,9 +70,6 @@
       </a>
     </ng-template>
 
-    <!-- End Logo container-->
-
-    <!-- Start Mobile Toggle -->
     <div class="menu-extras">
       <div class="menu-item">
         <a
@@ -91,9 +87,9 @@
         </a>
       </div>
     </div>
-    <!-- End Mobile Toggle -->
 
-    <!--Login button Start-->
+    @if(showUserInfo === true){
+
     <ul class="buy-button list-none mb-0">
       <li
         class="dropdown inline-block relative ps-1"
@@ -110,11 +106,42 @@
             }}{{ userData.name.split(" ")[2][0] }}</span
           >
         </button>
-        <!-- Dropdown menu -->
       </li>
-      <!--end dropdown-->
     </ul>
-    <!--Login button End-->
+    } @if(showUserInfo === false) {
+    <ul class="buy-button list-none mb-0">
+      <li
+        class="dropdown inline-block relative ps-1"
+        (clickOutside)="closeOutSideClick($event)"
+      >
+        <button
+          class="dropdown-toggle items-center"
+          type="button"
+          (click)="signOut()"
+        >
+          <span
+            class="btn btn-icon rounded-full bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-log-out size-4"
+              _ngcontent-ng-c3215848596=""
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line></svg
+          ></span>
+        </button>
+      </li>
+    </ul>
+    }
   </div>
-  <!--end container-->
 </nav>

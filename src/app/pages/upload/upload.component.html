@@ -3,6 +3,7 @@
   [navClass]="'justify-end nav-light'"
   [bgLight]="false"
   [navFull]="false"
+  [showUserInfo]="false"
 />
 <section class="relative lg:mt-24 mt-[74px]">
   <div class="lg:container container-fluid">
@@ -13,14 +14,20 @@
             <div
               class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md"
             >
-              <form class="text-start">
+              <form
+                class="text-start"
+                [formGroup]="upload"
+                (ngSubmit)="onSubmit()"
+              >
                 <div class="grid grid-cols-1">
                   <div class="mb-4 text-start">
                     <label for="jobcategories" class="font-semibold"
                       >¿Qué tipo de archivo subirás?:</label
                     >
                     <select
+                      formControlName="source"
                       class="form-select form-input border border-slate-100 dark:border-slate-800 mt-1"
+                      (change)="onSourceSelected($event)"
                     >
                       <option value="" disabled selected hidden>
                         Seleccione una opción
@@ -29,6 +36,19 @@
                       <option value="commercial">Commercial</option>
                       <option value="employee">Planilla</option>
                     </select>
+                    @if (submitted() && f['source'].errors) {
+                    <div class="invalid-feedback">
+                      @if (f['source'].errors['required']) {
+                      <p
+                        id="outlined_error_help"
+                        class="mt-2 text-xs text-red-600 dark:text-red-400"
+                      >
+                        {{ errors().source.required }}
+                      </p>
+
+                      }
+                    </div>
+                    }
                   </div>
 
                   <div class="mb-4 text-start">
@@ -36,11 +56,25 @@
                       >Archivo:</label
                     >
                     <input
+                      formControlName="file"
                       class="relative form-input border border-slate-100 dark:border-slate-800 file:h-10 file:-mx-3 file:-my-2 file:cursor-pointer file:rounded-none file:border-0 file:px-3 file:text-neutral-700 bg-clip-padding px-3 py-1.5 file:me-3 mt-1"
                       id="multiple_files"
                       type="file"
-                      multiple
+                      (change)="onFileSelected($event)"
                     />
+                    @if (submitted() && f['file'].errors) {
+                    <div class="invalid-feedback">
+                      @if (f['file'].errors['required']) {
+                      <p
+                        id="outlined_error_help"
+                        class="mt-2 text-xs text-red-600 dark:text-red-400"
+                      >
+                        {{ errors().file.required }}
+                      </p>
+
+                      }
+                    </div>
+                    }
                   </div>
 
                   <div>
@@ -50,17 +84,30 @@
                       name="send"
                       class="btn rounded-md bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-white"
                     >
-                      Enviar
+                      {{ submitted() ? "Cargando..." : "Enviar" }}
                     </button>
                   </div>
                 </div>
+                @if (result() !== '') {
+                <div class="invalid-feedback">
+                  <span
+                    class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 mt-4"
+                    >Se actualizaron {{ result() }} registros.</span
+                  >
+                </div>
+                } @if (errorInFile()) {
+                <div class="invalid-feedback">
+                  <span
+                    class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10 mt-4"
+                    >Selecciona el tipo de archivo y el archivo correcto</span
+                  >
+                </div>
+                }
               </form>
             </div>
-            <!--end form-->
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--end -->
 </section>

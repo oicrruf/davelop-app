@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { BackToHomeComponent } from '../../../components/back-to-home/back-to-home.component';
 import { environment } from '../../../../environments/environment.development';
 import { AuthService } from '../../../auth.service';
 import {
@@ -19,13 +18,7 @@ import { RouterLinkWithHref } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    BackToHomeComponent,
-    ReactiveFormsModule,
-    RouterLinkWithHref,
-  ],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, RouterLinkWithHref],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -66,7 +59,6 @@ export class LoginComponent implements OnInit {
     if (this.login.invalid) {
       return;
     }
-    console.log(this.login.value);
     this.httpClient
       .post(`${environment.apiUrl}/auth/login`, this.login.value)
       .subscribe({

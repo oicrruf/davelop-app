@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @Input() navClass: any;
   @Input() bgLight: any;
   @Input() navFull: any;
+  @Input() showUserInfo: any = true;
 
   scrolled: boolean = false;
   userData: any;
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   subManu: string = '';
 
   ngOnInit(): void {
-    if (this.userInfo !== null) {
+    if (this.showUserInfo!) {
       let userFromSession = JSON.parse(this.userInfo.getEmployeeInfo() || '');
       this.userData = userFromSession;
     }
@@ -68,5 +69,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   closeOutSideClick(e: any) {
     this.user = false;
+  }
+
+  signOut() {
+    this.userInfo.signOut();
   }
 }
