@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
         next: (data: any) => {
           console.log(this.data);
           this.data = data;
-          // this.authService.signIn(data.access_token);
+          this.authService.signIn(data.access_token);
           this.router.navigate(['/upload']);
         },
         error: (err: any) => {

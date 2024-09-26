@@ -13,11 +13,11 @@ export class AuthService {
     this.autoSignIn();
   }
 
-  // signIn(token: string) {
-  //   localStorage.setItem('@token', token);
-  //   this.isAuth.next(true);
-  //   this.router.navigate(['/upload']);
-  // }
+  signIn(token: string) {
+    localStorage.setItem('@token', token);
+    this.isAuth.next(true);
+    this.router.navigate(['/upload']);
+  }
 
   // searchStart(token: string) {
   //   localStorage.setItem('@user', token);
@@ -27,14 +27,12 @@ export class AuthService {
 
   autoSignIn() {
     if (sessionStorage.getItem('@user')) {
-      console.log(1);
       this.canViewResults.next(true);
     }
   }
 
   result(user: any) {
     sessionStorage.setItem('@user', JSON.stringify(user));
-    console.log(2);
     this.canViewResults.next(true);
     this.router.navigate(['/aplicaciones']);
   }
@@ -44,11 +42,11 @@ export class AuthService {
   //   this.router.navigate(['']);
   // }
 
-  // getToken(): string | null {
-  //   if (localStorage.getItem('@token')) {
-  //     return localStorage.getItem('@token');
-  //   } else return null;
-  // }
+  getToken(): string | null {
+    if (localStorage.getItem('@token')) {
+      return localStorage.getItem('@token');
+    } else return null;
+  }
 
   getEmployeeInfo(): string | null {
     if (sessionStorage.getItem('@user')) {

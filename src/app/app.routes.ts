@@ -3,6 +3,7 @@ import { searchGuard } from './search.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { UploadComponent } from './pages/upload/upload.component';
+import { authGuard } from './auth.guard';
 
 // import { SignupComponent } from './pages/auth/signup/signup.component';
 // import { SignupSuccessComponent } from './pages/auth/signup-success/signup-success.component';
@@ -23,8 +24,12 @@ export const routes: Routes = [
       import('./pages/detail/detail.component').then((m) => m.DetailComponent),
     canActivate: [searchGuard],
   },
-  { path: 'upload', component: UploadComponent },
-
+  {
+    path: 'upload',
+    loadComponent: () =>
+      import('./pages/upload/upload.component').then((m) => m.UploadComponent),
+    canActivate: [authGuard],
+  },
   // { path: 'signup', component: SignupComponent },
   // { path: 'signup-success', component: SignupSuccessComponent },
   // { path: 'reset-password', component: ResetPasswordComponent },
