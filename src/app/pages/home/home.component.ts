@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -72,10 +72,6 @@ export class HomeComponent implements OnInit {
               dui,
               email,
               position,
-            });
-
-            this.router.navigate(['aplicaciones'], {
-              state: { employee: data },
             });
           } else {
             this.not_found = signal(true);

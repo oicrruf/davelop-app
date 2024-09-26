@@ -1,4 +1,4 @@
-export const environment = {
-  development: false,
-  apiUrl: 'https://davith-api.onrender.com',
-};
+// export const environment = {
+//   development: false,
+//   apiUrl: 'https://davith-api.onrender.com',
+// };

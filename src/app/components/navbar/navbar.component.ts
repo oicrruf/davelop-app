@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     if (this.userInfo !== null) {
-      let userFromSession = JSON.parse(this.userInfo.getToken() || '');
+      let userFromSession = JSON.parse(this.userInfo.getEmployeeInfo() || '');
       this.userData = userFromSession;
     }
 

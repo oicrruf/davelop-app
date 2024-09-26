@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { forkJoin } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
+import { AuthService } from '../../auth.service';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import JobData from '../../data/job.json';
-import { forkJoin, mergeAll } from 'rxjs';
 
 @Component({
   selector: 'app-result',
@@ -19,12 +20,12 @@ export class ResultComponent implements OnInit {
   employee: any;
   applies: any = [];
 
-  administrative: any;
-  commercial: any;
+  administrative: any = [];
+  commercial: any = [];
   httpClient = inject(HttpClient);
-  constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    this.employee = navigation?.extras.state?.['employee'];
+
+  constructor(private router: Router, private userInfo: AuthService) {
+    this.employee = JSON.parse(this.userInfo.getEmployeeInfo() || '');
   }
 
   ngOnInit(): void {
@@ -38,8 +39,6 @@ export class ResultComponent implements OnInit {
     forkJoin([administrative, commercial]).subscribe((results) => {
       this.administrative = results[0];
       this.commercial = results[1];
-
-      console.log(this.administrative);
     });
   }
 }

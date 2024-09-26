@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import Candidate from '../../data/candidate.json';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -27,13 +27,12 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userInfo !== null) {
-      let userFromSession = JSON.parse(this.userInfo.getToken() || '');
+      let userFromSession = JSON.parse(this.userInfo.getEmployeeInfo() || '');
       this.userData = userFromSession;
     }
 
     this.id = this.route.snapshot.params['id'];
     this.type = this.route.snapshot.queryParams['type'];
-    console.log(this.route.snapshot);
     this.httpClient
       .post(`${environment.apiUrl}/${this.type}/apply`, {
         applyHash: this.route.snapshot.params['id'],
@@ -41,7 +40,6 @@ export class DetailComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.application = data;
-          console.log(this.application);
         },
         error: (err: any) => console.error(err),
       });
