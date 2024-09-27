@@ -89,11 +89,15 @@ export class UploadComponent implements OnInit {
     }
 
     this.httpClient
-      .post(`${environment.apiUrl}/${this.sendTo}/import`, this.formData)
+      .post(`${environment.apiUrl}/${this.sendTo}/import`, this.formData, {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${this.authService.getToken()}`
+        ),
+      })
       .subscribe({
         next: (data: any) => {
           this.result = signal(data.count);
-          // this.router.navigate(['/upload']);
           this.onReset();
         },
         error: (err: any) => {

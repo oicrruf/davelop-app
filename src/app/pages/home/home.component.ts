@@ -8,7 +8,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
 import { AuthService } from '../../auth.service';
 
@@ -22,7 +23,7 @@ import { AuthService } from '../../auth.service';
 export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private titleService: Title,
     private authService: AuthService
   ) {}
 
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.titleService.setTitle('Inicio | GPS para el Desarrollo');
     this.search = this.formBuilder.group({
       dui: ['', Validators.required],
     });

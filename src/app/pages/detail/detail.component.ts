@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import Candidate from '../../data/candidate.json';
 import { HttpClient } from '@angular/common/http';
+import { Component, inject, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
 import { AuthService } from '../../auth.service';
+import { AccordianComponent } from '../../components/accordian/accordian.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, NavbarComponent],
+  imports: [CommonModule, RouterLink, NavbarComponent, AccordianComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -23,12 +24,19 @@ export class DetailComponent implements OnInit {
   detail: any;
   type: any;
 
-  constructor(private route: ActivatedRoute, private userInfo: AuthService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private userInfo: AuthService,
+    private titleService: Title
+  ) {}
 
   ngOnInit(): void {
     if (this.userInfo !== null) {
       let userFromSession = JSON.parse(this.userInfo.getEmployeeInfo() || '');
       this.userData = userFromSession;
+      this.titleService.setTitle(
+        `${this.userData.name} | GPS para el Desarrollo`
+      );
     }
 
     this.id = this.route.snapshot.params['id'];

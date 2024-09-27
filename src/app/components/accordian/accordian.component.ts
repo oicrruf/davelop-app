@@ -1,43 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-accordian',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink
-  ],
+  imports: [CommonModule, RouterLink],
   templateUrl: './accordian.component.html',
-  styleUrl: './accordian.component.scss'
+  styleUrl: './accordian.component.scss',
 })
-export class AccordianComponent {
-  data = [
-    {
-      id:1,
-      title:'How does it work ?',
-      desc:'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.'
-    },
-    {
-      id:2,
-      title:'Do I need a designer to use Jobstack ?',
-      desc:'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.'
-    },
-    {
-      id:3,
-      title:'What do I need to do to start selling ?',
-      desc:'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.'
-    },
-    {
-      id:4,
-      title:'What happens when I receive an order ?',
-      desc:'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.'
-    },
-  ]
- activeTab:number = 1;
+export class AccordianComponent implements OnInit {
+  @Input() recommendations: any;
+  public data: any = [];
 
-  toggleBtn(index: number){
-    this.activeTab = index
+  ngOnInit(): void {
+    this.data = this.recommendations;
+  }
+
+  activeTab: number = 0;
+
+  toggleBtn(index: number) {
+    this.activeTab = index;
   }
 }

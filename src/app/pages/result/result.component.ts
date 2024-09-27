@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
@@ -24,11 +25,12 @@ export class ResultComponent implements OnInit {
   commercial: any = [];
   httpClient = inject(HttpClient);
 
-  constructor(private router: Router, private userInfo: AuthService) {
+  constructor(private userInfo: AuthService, private titleService: Title) {
     this.employee = JSON.parse(this.userInfo.getEmployeeInfo() || '');
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Tus Aplicaciones | GPS para el Desarrollo');
     const administrative = this.httpClient.get(
       `${environment.apiUrl}/administrative/applies/${this.employee.id}`
     );
