@@ -35,7 +35,10 @@
                   <h5 class="text-md font-semibold mb-0 mt-6">
                     {{ detail.title }}
                   </h5>
-                  <app-accordian [recommendations]="detail?.recommendations" />
+                  <app-accordian
+                    [firstTab]="activeTab"
+                    [recommendations]="detail?.recommendations"
+                  />
                 </div>
               </div>
             </div>

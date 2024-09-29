@@ -23,6 +23,7 @@ export class DetailComponent implements OnInit {
   userData: any;
   detail: any;
   type: any;
+  activeTab: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +49,8 @@ export class DetailComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.application = data;
+          this.activeTab =
+            data.recommendations[0].detail[0].recommendations[0].id;
         },
         error: (err: any) => console.error(err),
       });
