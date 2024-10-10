@@ -1,8 +1,4 @@
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
-import { environment } from '../../../environments/environment.development';
-import { AuthService } from '../../auth.service';
 import {
   AbstractControl,
   FormBuilder,
@@ -11,9 +7,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
+import { AuthService } from '../../auth.service';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
@@ -32,7 +33,7 @@ import { RouterLinkWithHref } from '@angular/router';
 export class UploadComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private titleService: Title,
     private authService: AuthService
   ) {}
 
@@ -73,6 +74,7 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Subir archivo | GPS para el Desarrollo');
     this.upload = this.formBuilder.group({
       source: ['', [Validators.required]],
       file: ['', Validators.required],
@@ -111,6 +113,7 @@ export class UploadComponent implements OnInit {
   onReset(): void {
     this.submitted = signal(false);
     this.upload.reset({ source: '' });
+    this.formData.delete('file');
   }
 
   errorInFile = signal(false);

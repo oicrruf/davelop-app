@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
       .post(`${environment.apiUrl}/auth/login`, this.login.value)
       .subscribe({
         next: (data: any) => {
-          console.log(this.data);
           this.data = data;
           this.authService.signIn(data.access_token);
           this.router.navigate(['/upload']);
